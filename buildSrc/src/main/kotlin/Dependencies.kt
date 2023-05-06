@@ -53,6 +53,16 @@ object Dependencies {
         const val espresso = "androidx.test.espresso:espresso-core:3.5.1"
     }
 
+    object Room {
+
+        private const val version = "2.5.1"
+
+        const val ksp = "androidx.room:room-compiler:$version"
+        const val roomKTX = "androidx.room:room-ktx:$version"
+        const val roomRuntime = "androidx.room:room-runtime:$version"
+        const val compiler = "androidx.room:room-compiler:$version"
+    }
+
     object Modules {
 
         const val database = ":database"
