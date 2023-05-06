@@ -1,4 +1,4 @@
-package ru.mpei.core.core
+package dmitriy.losev.core.core
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,8 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import dmitriy.losev.core.core.BaseViewModel
-import dmitriy.losev.core.core.theme.FileExchangerTheme
+import dmitriy.losev.core.core.theme.FileManagerTheme
 
 abstract class BaseActivity : ComponentActivity() {
 
@@ -22,7 +21,7 @@ abstract class BaseActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            FileExchangerTheme {
+            FileManagerTheme {
                 UI()
                 val errorMessage by baseViewModel.errorMessage.collectAsState()
                 val errorState by baseViewModel.errorState.collectAsState()

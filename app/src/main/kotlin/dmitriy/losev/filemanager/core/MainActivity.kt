@@ -4,10 +4,9 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import dmitriy.losev.core.core.BaseViewModel
-import dmitriy.losev.filemanager.core.MainViewModel
 import dmitriy.losev.filemanager.presentation.ui.TestScreen
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import ru.mpei.core.core.BaseActivity
+import dmitriy.losev.core.core.BaseActivity
 
 class MainActivity : BaseActivity() {
 
