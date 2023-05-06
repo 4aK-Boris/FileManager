@@ -11,6 +11,7 @@ android {
         minSdk = 24
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "dmitriy.losev.database.core.InstrumentationTestRoomRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -40,4 +41,13 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    androidTestImplementation(Dependencies.Koin.testAndroid)
+
+    implementation(Dependencies.Room.roomRuntime)
+    annotationProcessor(Dependencies.Room.compiler)
+
+    implementation(Dependencies.Room.roomKTX)
+
+    implementation(Dependencies.Koin.android)
 }
