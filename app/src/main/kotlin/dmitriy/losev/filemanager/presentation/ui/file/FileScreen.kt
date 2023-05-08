@@ -1,6 +1,5 @@
 package dmitriy.losev.filemanager.presentation.ui.file
 
-import android.net.Uri
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -15,15 +14,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import dmitriy.losev.filemanager.core.file.FileExtension
 import dmitriy.losev.filemanager.presentation.viewmodels.FileViewModel
-import java.io.File
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -37,11 +36,14 @@ fun FileScreen(
 
     val files by viewModel.files.collectAsState()
 
-    val uriHandler = LocalUriHandler.current
+    val scope = rememberCoroutineScope()
 
     LaunchedEffect(key1 = path) {
-        viewModel.loadingFiles(path = path)
-        viewModel.sortedFiles()
+        scope.launch(Dispatchers.Default) {
+            viewModel.loadingFiles(path = path)
+            viewModel.sortedFiles()
+            viewModel.checkChangingFile()
+        }
     }
 
     LazyColumn(
@@ -55,18 +57,7 @@ fun FileScreen(
 
         itemsIndexed(files) { index, fileModel ->
 
-            val onClick = {
-                if (fileModel.extension !== FileExtension.FOLDER) {
-                    uriHandler.openUri(Uri.fromFile(File(fileModel.path)).encodedPath!!)
-                } else {
-                    viewModel.onChangePath(
-                        newPath = fileModel.path,
-                        navController = navController
-                    )
-                }
-            }
-
-            FileItem(fileItem = fileModel, onClick = onClick)
+            FileItem(fileItem = fileModel, viewModel = viewModel, navController = navController)
 
             if (index < files.lastIndex) {
                 Divider(

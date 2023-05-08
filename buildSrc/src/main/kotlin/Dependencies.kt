@@ -26,9 +26,11 @@ object Dependencies {
 
         const val compose = "io.insert-koin:koin-androidx-compose:$composeVersion"
         const val navigation = "io.insert-koin:koin-androidx-compose-navigation:$composeVersion"
+        const val workManager = "io.insert-koin:koin-androidx-workmanager:$version"
 
         const val testAndroid = "io.insert-koin:koin-android-test:$version"
         const val test = "io.insert-koin:koin-test:$version"
+        const val jUnit = "io.insert-koin:koin-test-junit4:$version"
     }
 
     object Compose {
@@ -63,6 +65,13 @@ object Dependencies {
         const val roomKTX = "androidx.room:room-ktx:$version"
         const val roomRuntime = "androidx.room:room-runtime:$version"
         const val compiler = "androidx.room:room-compiler:$version"
+    }
+
+    object WorkManager {
+
+        private const val version = "2.8.1"
+
+        const val work = "androidx.work:work-runtime-ktx:$version"
     }
 
     object Modules {

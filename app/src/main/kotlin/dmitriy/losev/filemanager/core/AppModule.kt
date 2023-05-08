@@ -11,5 +11,12 @@ import org.koin.dsl.module
 
 val appModule = module {
 
-    includes(coreModule, viewModelModule, repositoryModule, mapperModule, useCaseModule, roomModule)
+    includes(
+        coreModule,
+        viewModelModule,
+        repositoryModule,
+        mapperModule,
+        useCaseModule,
+        roomModule
+    )
 }

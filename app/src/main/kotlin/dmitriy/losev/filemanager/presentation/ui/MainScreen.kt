@@ -11,12 +11,11 @@ import androidx.compose.ui.Modifier
 import dmitriy.losev.filemanager.presentation.navigation.Navigation
 import dmitriy.losev.filemanager.presentation.ui.file.TopBar
 import dmitriy.losev.filemanager.presentation.viewmodels.FileViewModel
-import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun MainScreen(viewModel: FileViewModel = koinViewModel()) {
+fun MainScreen(viewModel: FileViewModel) {
 
     Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
         TopBar(viewModel = viewModel)
@@ -24,7 +23,8 @@ fun MainScreen(viewModel: FileViewModel = koinViewModel()) {
         Navigation(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(paddingValues = paddingValues), viewModel = viewModel
+                .padding(paddingValues = paddingValues),
+            viewModel = viewModel
         )
     }
 }

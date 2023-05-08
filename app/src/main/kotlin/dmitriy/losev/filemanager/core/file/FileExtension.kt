@@ -43,7 +43,7 @@ enum class FileExtension(@DrawableRes val idRes: Int, var type: String) {
     FLA(idRes = R.drawable.fla, type = ".fla"),
     WMA(idRes = R.drawable.wma, type = ".wma"),
     MDF(idRes = R.drawable.mdf, type = ".mdf"),
-    FOLDER(idRes = R.drawable.ic_folder, type = "");
+    FOLDER(idRes = R.drawable.ic_folder, type = "folder");
 
     companion object {
         fun getExtension(file: File): FileExtension {
@@ -60,7 +60,7 @@ enum class FileExtension(@DrawableRes val idRes: Int, var type: String) {
             return if (indexPoint == -1) {
                 ""
             } else {
-                name.substring(startIndex = indexPoint)
+                name.substring(startIndex = indexPoint).lowercase()
             }
         }
     }

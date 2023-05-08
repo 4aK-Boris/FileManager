@@ -50,8 +50,11 @@ dependencies {
     implementation(Dependencies.Compose.material)
 
     implementation(Dependencies.Koin.compose)
+    implementation(Dependencies.Koin.core)
 
     testImplementation(Dependencies.Test.jUnit)
+    testImplementation(Dependencies.Koin.test)
+    testImplementation(Dependencies.Koin.jUnit)
 
     androidTestImplementation(Dependencies.Test.androidJUnit)
     androidTestImplementation(Dependencies.Test.espresso)

@@ -65,6 +65,9 @@ dependencies {
     implementation(Dependencies.Koin.android)
     implementation(Dependencies.Koin.compose)
     implementation(Dependencies.Koin.navigation)
+    //implementation(Dependencies.Koin.workManager)
+
+    implementation(Dependencies.WorkManager.work)
 
     implementation(Dependencies.Kotlin.coroutines)
     implementation(Dependencies.Kotlin.serialization)

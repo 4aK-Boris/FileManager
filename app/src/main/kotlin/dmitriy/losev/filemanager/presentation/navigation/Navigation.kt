@@ -29,7 +29,7 @@ fun Navigation(
         composable(
             route = Screens.PermissionScreen.route,
         ) { _ -> 
-            PermissionScreen(navController = navController)
+            PermissionScreen(navController = navController, viewModel = viewModel)
         }
         
         composable(

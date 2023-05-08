@@ -23,10 +23,13 @@ import com.google.accompanist.permissions.MultiplePermissionsState
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import dmitriy.losev.filemanager.R
 import dmitriy.losev.filemanager.presentation.navigation.Screens
+import dmitriy.losev.filemanager.presentation.viewmodels.FileViewModel
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
-fun PermissionScreen(navController: NavController) {
+fun PermissionScreen(navController: NavController, viewModel: FileViewModel) {
+
+    val path = Environment.getExternalStorageDirectory().absolutePath
 
     val filesPermissionState = rememberMultiplePermissionsState(
         listOf(
@@ -36,17 +39,24 @@ fun PermissionScreen(navController: NavController) {
     )
 
     if (filesPermissionState.allPermissionsGranted) {
-        val path = Environment.getExternalStorageDirectory().absolutePath
+        navController.popBackStack()
         navController.navigate(Screens.FileScreen.createRoute(path = path))
-        navController.clearBackStack(Screens.PermissionScreen.route)
     } else {
-        Permission(filesPermissionState = filesPermissionState)
+        Permission(
+            filesPermissionState = filesPermissionState,
+            createHashFiles = viewModel::createHashFiles,
+            path = path
+        )
     }
 }
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
-private fun Permission(filesPermissionState: MultiplePermissionsState) {
+private fun Permission(
+    filesPermissionState: MultiplePermissionsState,
+    createHashFiles: (String) -> Unit,
+    path: String
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -67,7 +77,10 @@ private fun Permission(filesPermissionState: MultiplePermissionsState) {
             fontFamily = FontFamily.SansSerif
         )
 
-        Button(onClick = { filesPermissionState.launchMultiplePermissionRequest() }) {
+        Button(onClick = {
+            filesPermissionState.launchMultiplePermissionRequest()
+            createHashFiles(path)
+        }) {
             Text(text = stringResource(id = R.string.permission_button))
         }
     }
