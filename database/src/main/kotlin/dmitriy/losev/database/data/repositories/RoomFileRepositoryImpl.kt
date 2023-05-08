@@ -15,4 +15,31 @@ class RoomFileRepositoryImpl(
         fileDao.addAllFiles(files = files)
     }
 
+    override suspend fun getFile(path: String): FileEntity? {
+        return fileDao.getFile(path = path)
+    }
+
+    override suspend fun hasFile(file: FileEntity): Boolean {
+        return fileDao.getFile(path = file.path, hash = file.hash) != null
+    }
+
+    override suspend fun hasFile(path: String): Boolean {
+        return fileDao.getFile(path = path) != null
+    }
+
+    override suspend fun deleteFile(path: String) {
+        fileDao.delete(path = path)
+    }
+
+    override suspend fun deleteFile(file: FileEntity) {
+        fileDao.delete(file = file)
+    }
+
+    override suspend fun deleteAll() {
+        fileDao.deleteAll()
+    }
+
+    override suspend fun deleteAll(files: List<FileEntity>) {
+        fileDao.deleteAll(files = files)
+    }
 }

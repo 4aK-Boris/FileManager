@@ -1,6 +1,7 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id(Dependencies.Plugins.library)
+    id(Dependencies.Plugins.android)
+    id(Dependencies.Plugins.ksp)
 }
 
 android {
@@ -10,7 +11,6 @@ android {
     defaultConfig {
         minSdk = 24
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunner = "dmitriy.losev.database.core.InstrumentationTestRoomRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -25,11 +25,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 
@@ -46,8 +46,7 @@ dependencies {
 
     implementation(Dependencies.Room.roomRuntime)
     annotationProcessor(Dependencies.Room.compiler)
-
+    ksp(Dependencies.Room.compiler)
     implementation(Dependencies.Room.roomKTX)
-
     implementation(Dependencies.Koin.android)
 }

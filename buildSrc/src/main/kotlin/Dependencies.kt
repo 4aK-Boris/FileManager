@@ -74,11 +74,13 @@ object Dependencies {
 
     object Plugins {
 
+        const val kspVersion = "1.8.20-1.0.11"
+
         const val applicationVersion = "8.2.0-alpha02"
         const val application = "com.android.application"
         const val android = "org.jetbrains.kotlin.android"
         const val library = "com.android.library"
-
+        const val ksp = "com.google.devtools.ksp"
         const val jvm = "org.jetbrains.kotlin.jvm"
     }
 }

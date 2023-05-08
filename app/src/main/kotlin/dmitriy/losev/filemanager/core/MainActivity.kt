@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import dmitriy.losev.core.core.BaseActivity
 import dmitriy.losev.core.core.BaseViewModel
 import dmitriy.losev.filemanager.presentation.ui.MainScreen
+import dmitriy.losev.filemanager.presentation.ui.TestScreen
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity() {
@@ -17,6 +18,8 @@ class MainActivity : BaseActivity() {
     @Composable
     override fun UI() {
 
-        MainScreen()
+        //MainScreen()
+
+        TestScreen()
     }
 }
