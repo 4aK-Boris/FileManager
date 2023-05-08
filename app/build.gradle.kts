@@ -34,7 +34,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "1.8"
     }
     buildFeatures {
         compose = true
@@ -54,15 +54,20 @@ dependencies {
     implementation(Dependencies.Android.core)
     implementation(Dependencies.Android.lifecycle)
     implementation(Dependencies.Android.activity)
+    implementation(Dependencies.Android.permissions)
 
     implementation(Dependencies.Compose.ui)
     implementation(Dependencies.Compose.graphics)
     implementation(Dependencies.Compose.preview)
     implementation(Dependencies.Compose.material)
+    implementation(Dependencies.Compose.icons)
 
     implementation(Dependencies.Koin.android)
     implementation(Dependencies.Koin.compose)
     implementation(Dependencies.Koin.navigation)
+    //implementation(Dependencies.Koin.workManager)
+
+    implementation(Dependencies.WorkManager.work)
 
     implementation(Dependencies.Kotlin.coroutines)
     implementation(Dependencies.Kotlin.serialization)

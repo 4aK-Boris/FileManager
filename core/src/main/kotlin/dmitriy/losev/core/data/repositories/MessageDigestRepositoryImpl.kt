@@ -14,10 +14,10 @@ class MessageDigestRepositoryImpl(
         withContext(Dispatchers.IO) {
             val stream = FileInputStream(path).buffered()
             val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
-            var length = stream.read(buffer)
-            while (length > 0) {
-                length = stream.read(buffer)
-                messageDigest.update(buffer, 0, length)
+            var read = stream.read(buffer, 0, DEFAULT_BUFFER_SIZE)
+            while (read > -1) {
+                messageDigest.update(buffer, 0, read)
+                read = stream.read(buffer, 0, DEFAULT_BUFFER_SIZE)
             }
         }
         return messageDigest.digest()

@@ -28,7 +28,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "1.8"
+    }
+    buildFeatures {
+        compose = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = Dependencies.Compose.compilerVersion
@@ -47,8 +50,11 @@ dependencies {
     implementation(Dependencies.Compose.material)
 
     implementation(Dependencies.Koin.compose)
+    implementation(Dependencies.Koin.core)
 
     testImplementation(Dependencies.Test.jUnit)
+    testImplementation(Dependencies.Koin.test)
+    testImplementation(Dependencies.Koin.jUnit)
 
     androidTestImplementation(Dependencies.Test.androidJUnit)
     androidTestImplementation(Dependencies.Test.espresso)

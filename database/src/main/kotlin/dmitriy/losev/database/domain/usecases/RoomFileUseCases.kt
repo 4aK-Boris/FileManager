@@ -16,4 +16,34 @@ class RoomFileUseCases(
     suspend fun addFiles(files: List<RoomFileModel>) {
         roomFileRepository.addFiles(files = files.map { file -> roomFileMapper.map(value = file) })
     }
+
+    suspend fun getFile(path: String): RoomFileModel? {
+        return roomFileRepository.getFile(path = path)?.let { roomFileMapper.map(value = it) }
+    }
+
+    suspend fun hasFile(file: RoomFileModel): Boolean {
+        return roomFileRepository.hasFile(file = roomFileMapper.map(value = file))
+    }
+
+    suspend fun hasFile(path: String): Boolean {
+        return roomFileRepository.hasFile(path = path)
+    }
+
+    suspend fun deleteFile(path: String) {
+        roomFileRepository.deleteFile(path = path)
+    }
+
+    suspend fun deleteFile(file: RoomFileModel) {
+        roomFileRepository.deleteFile(file = roomFileMapper.map(value = file))
+    }
+
+    suspend fun deleteAll() {
+        roomFileRepository.deleteAll()
+    }
+
+    suspend fun deleteAll(files: List<RoomFileModel>) {
+        roomFileRepository.deleteAll(files = files.map { file ->
+            roomFileMapper.map(value = file)
+        })
+    }
 }

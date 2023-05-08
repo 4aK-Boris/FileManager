@@ -13,6 +13,7 @@ object Dependencies {
         const val core = "androidx.core:core-ktx:1.10.0"
         const val lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
         const val activity = "androidx.activity:activity-compose:1.7.1"
+        const val permissions = "com.google.accompanist:accompanist-permissions:0.31.1-alpha"
     }
 
     object Koin {
@@ -25,14 +26,16 @@ object Dependencies {
 
         const val compose = "io.insert-koin:koin-androidx-compose:$composeVersion"
         const val navigation = "io.insert-koin:koin-androidx-compose-navigation:$composeVersion"
+        const val workManager = "io.insert-koin:koin-androidx-workmanager:$version"
 
         const val testAndroid = "io.insert-koin:koin-android-test:$version"
         const val test = "io.insert-koin:koin-test:$version"
+        const val jUnit = "io.insert-koin:koin-test-junit4:$version"
     }
 
     object Compose {
 
-        private const val version = "1.4.2"
+        private const val version = "1.4.3"
         const val compilerVersion = "1.4.6"
         private const val materialVersion = "1.0.1"
 
@@ -41,7 +44,8 @@ object Dependencies {
         const val preview = "androidx.compose.ui:ui-tooling-preview:$version"
         const val material = "androidx.compose.material3:material3:$materialVersion"
         const val tooling = "androidx.compose.ui:ui-tooling:$version"
-        const val manifest= "androidx.compose.ui:ui-test-manifest:$version"
+        const val manifest = "androidx.compose.ui:ui-test-manifest:$version"
+        const val icons = "androidx.compose.material:material-icons-extended:$version"
 
         const val jUnit = "androidx.compose.ui:ui-test-junit4:$version"
     }
@@ -63,6 +67,13 @@ object Dependencies {
         const val compiler = "androidx.room:room-compiler:$version"
     }
 
+    object WorkManager {
+
+        private const val version = "2.8.1"
+
+        const val work = "androidx.work:work-runtime-ktx:$version"
+    }
+
     object Modules {
 
         const val database = ":database"
@@ -72,11 +83,13 @@ object Dependencies {
 
     object Plugins {
 
+        const val kspVersion = "1.8.20-1.0.11"
+
         const val applicationVersion = "8.2.0-alpha02"
         const val application = "com.android.application"
         const val android = "org.jetbrains.kotlin.android"
         const val library = "com.android.library"
-
+        const val ksp = "com.google.devtools.ksp"
         const val jvm = "org.jetbrains.kotlin.jvm"
     }
 }

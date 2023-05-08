@@ -3,4 +3,5 @@ plugins {
     id(Dependencies.Plugins.android) version Dependencies.Kotlin.version apply false
     id(Dependencies.Plugins.jvm) version Dependencies.Kotlin.version apply false
     id(Dependencies.Plugins.library) version Dependencies.Plugins.applicationVersion apply false
+    id(Dependencies.Plugins.ksp) version Dependencies.Plugins.kspVersion apply false
 }
