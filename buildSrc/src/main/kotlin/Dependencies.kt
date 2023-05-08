@@ -13,6 +13,7 @@ object Dependencies {
         const val core = "androidx.core:core-ktx:1.10.0"
         const val lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
         const val activity = "androidx.activity:activity-compose:1.7.1"
+        const val permissions = "com.google.accompanist:accompanist-permissions:0.31.1-alpha"
     }
 
     object Koin {
@@ -32,7 +33,7 @@ object Dependencies {
 
     object Compose {
 
-        private const val version = "1.4.2"
+        private const val version = "1.4.3"
         const val compilerVersion = "1.4.6"
         private const val materialVersion = "1.0.1"
 
@@ -41,7 +42,8 @@ object Dependencies {
         const val preview = "androidx.compose.ui:ui-tooling-preview:$version"
         const val material = "androidx.compose.material3:material3:$materialVersion"
         const val tooling = "androidx.compose.ui:ui-tooling:$version"
-        const val manifest= "androidx.compose.ui:ui-test-manifest:$version"
+        const val manifest = "androidx.compose.ui:ui-test-manifest:$version"
+        const val icons = "androidx.compose.material:material-icons-extended:$version"
 
         const val jUnit = "androidx.compose.ui:ui-test-junit4:$version"
     }

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FileManager</string>
+    <string name="title">Файловый менеджер</string>
+    <string name="permission_1">Без данных прав приложение не будет работать</string>
+    <string name="permission_2">Для работы этого приложения необходимы разрешения на чтение и запись. Пожалуйста, дайте разрешение.</string>
+    <string name="permission_button">Выдать права</string>
 </resources>
