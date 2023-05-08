@@ -13,11 +13,10 @@ val roomModule = module {
     includes(roomMapperModule, roomRepositoryModule, roomUseCaseModule, daoModule)
 
     single<FileManagerDatabase> {
-        println(androidContext())
         Room.databaseBuilder(
             context = androidContext(),
             klass = FileManagerDatabase::class.java,
-            name = DATABASE_TEST_NAME
+            name = DATABASE_NAME
         ).build()
     }
 }
