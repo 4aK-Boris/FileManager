@@ -11,11 +11,8 @@ import dmitriy.losev.filemanager.core.file.SortedType
 import dmitriy.losev.filemanager.domain.models.FileModel
 import dmitriy.losev.filemanager.domain.usecases.FileUseCases
 import dmitriy.losev.filemanager.presentation.navigation.Screens
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collectLatest
 
 class FileViewModel(
     errorHandler: ErrorHandler,

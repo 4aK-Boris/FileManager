@@ -23,7 +23,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import dmitriy.losev.filemanager.core.file.FileExtension
 import dmitriy.losev.filemanager.presentation.viewmodels.FileViewModel
-import org.koin.androidx.compose.koinViewModel
 import java.io.File
 
 

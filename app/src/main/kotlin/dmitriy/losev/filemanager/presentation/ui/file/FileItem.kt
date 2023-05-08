@@ -18,7 +18,6 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import dmitriy.losev.filemanager.R
 import dmitriy.losev.filemanager.domain.models.FileModel
 
 @Composable

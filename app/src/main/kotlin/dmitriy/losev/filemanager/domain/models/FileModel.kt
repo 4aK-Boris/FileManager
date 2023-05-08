@@ -1,7 +1,6 @@
 package dmitriy.losev.filemanager.domain.models
 
 import dmitriy.losev.filemanager.core.file.FileExtension
-import java.nio.file.attribute.FileTime
 
 data class FileModel(
    val extension: FileExtension,

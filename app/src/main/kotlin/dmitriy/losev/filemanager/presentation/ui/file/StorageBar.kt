@@ -1,7 +1,6 @@
 package dmitriy.losev.filemanager.presentation.ui.file
 
 import android.os.Environment
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -31,7 +30,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import dmitriy.losev.core.core.theme.SurfaceLight
 import dmitriy.losev.filemanager.presentation.viewmodels.FileViewModel
-import org.koin.androidx.compose.koinViewModel
 
 private val STORAGE = Environment.getExternalStorageDirectory().absolutePath
 

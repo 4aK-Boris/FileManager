@@ -1,7 +1,6 @@
 package dmitriy.losev.filemanager.presentation.ui.file
 
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.animateIntAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -40,13 +39,10 @@ import dmitriy.losev.filemanager.R
 import dmitriy.losev.filemanager.core.file.SortedOrder
 import dmitriy.losev.filemanager.core.file.SortedType
 import dmitriy.losev.filemanager.presentation.viewmodels.FileViewModel
-import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(viewModel: FileViewModel) {
-
-    val context = LocalContext.current
 
     val sortedOrder by viewModel.sortedOrder.collectAsState()
     val sortedType by viewModel.sortedType.collectAsState()
@@ -54,8 +50,6 @@ fun TopBar(viewModel: FileViewModel) {
     val (menuState, onMenuStateChanged) = rememberSaveable {
         mutableStateOf(value = false)
     }
-
-    val files by viewModel.files.collectAsState()
 
     TopAppBar(
         colors = TopAppBarDefaults.mediumTopAppBarColors(containerColor = SurfaceLight),

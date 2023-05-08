@@ -3,7 +3,6 @@ package dmitriy.losev.filemanager.core
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
-import androidx.core.app.ActivityCompat
 import dmitriy.losev.core.core.BaseActivity
 import dmitriy.losev.core.core.BaseViewModel
 import dmitriy.losev.filemanager.presentation.ui.MainScreen
