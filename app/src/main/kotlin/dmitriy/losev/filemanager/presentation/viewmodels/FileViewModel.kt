@@ -25,7 +25,7 @@ import kotlinx.coroutines.withContext
 
 class FileViewModel(
         errorHandler: ErrorHandler,
-        private val application: Application,
+        application: Application,
         private val fileUseCases: FileUseCases,
         private val intentUseCases: IntentUseCases
 ) : BaseViewModel(errorHandler = errorHandler) {
