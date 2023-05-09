@@ -31,9 +31,8 @@ class ErrorHandler {
     }
 
     private fun initErrorMap(): MutableMap<Int, () -> Unit> = mutableMapOf(
-        BAD_REQUEST to { showError("Проблема на стороне клиента!") },
-        INTERNAL_SERVER_ERROR to { showError("Проблема с сервером") },
-        NO_INTERNET to { showError("Пожалуйста, проверьте сетевое подключение") }
+            VERY_FAST_CLICKS to { showError("Слишком быстрые нажатия. Помедленее!") },
+            NOT_FOUND_APPLICATION to { showError("Нет приложения для открытия этого файла!") }
     )
 
     fun handleError(errorId: Int) {

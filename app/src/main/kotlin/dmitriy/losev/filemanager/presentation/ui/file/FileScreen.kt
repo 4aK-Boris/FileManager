@@ -14,7 +14,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -22,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import dmitriy.losev.filemanager.presentation.viewmodels.FileViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -36,12 +35,10 @@ fun FileScreen(
 
     val files by viewModel.files.collectAsState()
 
-    val scope = rememberCoroutineScope()
-
     LaunchedEffect(key1 = path) {
-        scope.launch(Dispatchers.Default) {
+        withContext(Dispatchers.Default) {
             viewModel.loadingFiles(path = path)
-            viewModel.sortedFiles()
+            viewModel.sortingFiles()
             viewModel.checkChangingFile()
         }
     }
@@ -57,17 +54,18 @@ fun FileScreen(
 
         itemsIndexed(files) { index, fileModel ->
 
-            FileItem(fileItem = fileModel, viewModel = viewModel, navController = navController)
+            FileItem(fileModel = fileModel, viewModel = viewModel, navController = navController)
 
             if (index < files.lastIndex) {
                 Divider(
                     color = Color.DarkGray,
                     thickness = 1.dp,
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp)
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp)
                 )
             }
         }
     }
 }
+

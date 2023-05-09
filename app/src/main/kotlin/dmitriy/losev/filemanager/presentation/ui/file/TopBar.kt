@@ -55,8 +55,8 @@ fun TopBar(viewModel: FileViewModel) {
         title = {
             Row(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp),
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
@@ -85,17 +85,17 @@ fun TopBar(viewModel: FileViewModel) {
                     ) {
                         SortedOrder.values().forEach { order ->
                             DropdownMenuItem(
-                                text = { Text(text = order.title) },
-                                onClick = {
-                                    viewModel.onSortedOrderChanged(sortedOrder = order)
-                                },
-                                trailingIcon = {
-                                    if (sortedOrder == order) {
+                                    text = { Text(text = stringResource(id = order.title)) },
+                                    onClick = {
+                                        viewModel.onSortedOrderChanged(sortedOrder = order)
+                                    },
+                                    trailingIcon = {
+                                        if (sortedOrder == order) {
 
-                                        val angle =
-                                            if (sortedType == SortedType.STRAIGHT) 0f else 180f
+                                            val angle =
+                                                    if (sortedType == SortedType.STRAIGHT) 0f else 180f
 
-                                        val animatedAngle by animateFloatAsState(
+                                            val animatedAngle by animateFloatAsState(
                                             targetValue = angle,
                                             animationSpec = spring(),
                                             label = "Анимация поворота стрелки"

@@ -1,9 +1,13 @@
 package dmitriy.losev.core.core
 
+import android.content.ActivityNotFoundException
+import dmitriy.losev.core.core.exception.BaseException
+import dmitriy.losev.core.core.exception.NOT_FOUND_APPLICATION
+import dmitriy.losev.core.core.exception.SAFE_CALL_FAIL
+import dmitriy.losev.core.core.exception.VERY_FAST_CLICKS
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.coroutineScope
-import dmitriy.losev.core.core.exception.BaseException
-import dmitriy.losev.core.core.exception.SAFE_CALL_FAIL
+import kotlin.coroutines.cancellation.CancellationException
 
 open class BaseUseCase {
 
@@ -12,8 +16,11 @@ open class BaseUseCase {
             Result.Success(call())
         }
     } catch (baseException: BaseException) {
-        baseException.printStackTrace()
         Result.Error(baseException, baseException.extraErrorCode)
+    } catch (ex: CancellationException) {
+        Result.Error(ex, VERY_FAST_CLICKS)
+    } catch (ex: ActivityNotFoundException) {
+        Result.Error(ex, NOT_FOUND_APPLICATION)
     } catch (ex: Exception) {
         ex.printStackTrace()
         Result.Error(ex, SAFE_CALL_FAIL)

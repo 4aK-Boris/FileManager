@@ -4,4 +4,8 @@
     <string name="permission_1">Без данных прав приложение не будет работать</string>
     <string name="permission_2">Для работы этого приложения необходимы разрешения на чтение и запись. Пожалуйста, дайте разрешение.</string>
     <string name="permission_button">Выдать права</string>
+    <string name="order_alphabet">По названию</string>
+    <string name="order_size">По размеру</string>
+    <string name="order_date">По дате</string>
+    <string name="order_extension">По расширению</string>
 </resources>
