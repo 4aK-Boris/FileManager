@@ -24,81 +24,63 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import dmitriy.losev.core.core.theme.cardCollapsedBackgroundColor
-import dmitriy.losev.filemanager.core.file.FileExtension
 import dmitriy.losev.filemanager.domain.models.FileModel
 import dmitriy.losev.filemanager.presentation.viewmodels.FileViewModel
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun FileItem(
-    fileItem: FileModel,
-    navController: NavController,
-    viewModel: FileViewModel
+        fileModel: FileModel,
+        navController: NavController,
+        viewModel: FileViewModel
 ) {
 
-    val gradientColor = if (fileItem.isChanged) {
+    val gradientColor = if (fileModel.isChanged) {
         cardCollapsedBackgroundColor
     } else {
         Color.White
     }
 
-    val onClick = {
-        if (fileItem.extension !== FileExtension.FOLDER) {
-            viewModel.openFile(fileItem.path)
-        } else {
-            viewModel.onChangePath(
-                newPath = fileItem.path,
-                navController = navController
-            )
-        }
-    }
-
-    val onLongClick = {
-        if (fileItem.extension !== FileExtension.FOLDER) {
-            viewModel.sharedFile(fileItem.path)
-        }
-    }
-
     Row(
         modifier = Modifier
-            .background(
-                brush = Brush.horizontalGradient(
-                    listOf(
-                        Color.White,
-                        gradientColor,
-                        Color.White
-                    )
+                .background(
+                        brush = Brush.horizontalGradient(
+                                listOf(
+                                        Color.White,
+                                        gradientColor,
+                                        Color.White
+                                )
+                        )
                 )
-            )
-            .padding(horizontal = 16.dp)
-            .height(height = 56.dp)
-            .combinedClickable(onClick = {
-                onClick()
-            }, onLongClick = {
-                onLongClick()
-            }),
+                .padding(horizontal = 16.dp)
+                .height(height = 56.dp)
+                .combinedClickable(onClick = {
+                    viewModel.onClickOnItem(fileModel = fileModel, navController = navController)
+                }, onLongClick = {
+                    viewModel.onLongClickOnItem(fileModel = fileModel)
+                }),
         horizontalArrangement = Arrangement.Start,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        FileIcon(drawable = painterResource(id = fileItem.extension.idRes))
+        FileIcon(drawable = painterResource(id = fileModel.extension.idRes))
 
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(start = 8.dp, top = 4.dp),
+                    .fillMaxSize()
+                    .padding(start = 8.dp, top = 4.dp),
             horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-            MainText(text = fileItem.name)
+            MainText(text = fileModel.name)
 
             Row(
                 modifier = Modifier.fillMaxSize(),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                SecondaryText(text = fileItem.size)
+                SecondaryText(text = fileModel.size)
 
-                SecondaryText(text = fileItem.dateOfCreation)
+                SecondaryText(text = fileModel.dateOfCreation)
             }
         }
     }

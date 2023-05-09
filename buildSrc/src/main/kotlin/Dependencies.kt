@@ -2,7 +2,7 @@ object Dependencies {
 
     object Kotlin {
 
-        const val version = "1.8.20"
+        const val version = "1.8.21"
 
         const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
         const val serialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0"
@@ -14,6 +14,7 @@ object Dependencies {
         const val lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
         const val activity = "androidx.activity:activity-compose:1.7.1"
         const val permissions = "com.google.accompanist:accompanist-permissions:0.31.1-alpha"
+        const val appcompat = "androidx.appcompat:appcompat:1.6.1"
     }
 
     object Koin {
@@ -35,8 +36,8 @@ object Dependencies {
 
     object Compose {
 
-        private const val version = "1.4.3"
-        const val compilerVersion = "1.4.6"
+        private const val version = "1.5.0-alpha03"
+        const val compilerVersion = "1.4.7"
         private const val materialVersion = "1.0.1"
 
         const val ui = "androidx.compose.ui:ui:$version"
